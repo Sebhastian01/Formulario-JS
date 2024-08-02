@@ -1,13 +1,24 @@
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevenir el envío del formulario por defecto
+const frmEmail = document.getElementById ("frm-email")
+frmEmail.addEventListener('submit', sendEmail)
 
     // Obtener los valores del formulario
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
+    const serviceId = "service_g2wujj3"
+    const templateId = "template_8a5y8ne"
+    const apiKey = "K5rO6toJlR_kx5MBh"
+    
+    function sendEmail(event){
+        event.preventDefault()
+        emailjs.init(serviceId)
 
-    // Mostrar mensaje de confirmación
-    const resultMessageDiv = document.getElementById('resultMessage');
-    resultMessageDiv.textContent = `Gracias por tu mensaje, ${name}. Nos pondremos en contacto contigo en ${email} o ${phone}. Tu mensaje: "${message}" ha sido recibido.`;
-});
+        emailjs
+        .sendForm(serviceId, templateId, frmEmail, apiKey)
+        .then((result) => Swal.fire("Mensaje enviado"))
+        .catch((error) =>{
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Mensaje NO ha sido posible enviarlo",
+                /*footer: '<a href="#">Why do I have this issue?</a>' --este mensaje es si queremos poner un link o rferencias al usuario a un lado donde pueda buscar ayuda para el error*/
+        });
+    });
+    }
