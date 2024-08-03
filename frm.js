@@ -1,4 +1,4 @@
-const frmEmail = document.getElementById ("frm-email")
+const frmEmail = document.getElementById ("contactForm")
 frmEmail.addEventListener('submit', sendEmail)
 
     // Obtener los valores del formulario
@@ -18,7 +18,7 @@ frmEmail.addEventListener('submit', sendEmail)
                 icon: "error",
                 title: "Oops...",
                 text: "Mensaje NO ha sido posible enviarlo",
-                /*footer: '<a href="#">Why do I have this issue?</a>' --este mensaje es si queremos poner un link o rferencias al usuario a un lado donde pueda buscar ayuda para el error*/
+                /* footer: '<a href="#">Why do I have this issue?</a>' --este mensaje es si queremos poner un link o rferencias al usuario a un lado donde pueda buscar ayuda para el error*/
         });
     });
     }
